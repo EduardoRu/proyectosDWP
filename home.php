@@ -56,13 +56,17 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
         createProyecto($proyecto);
     }
     // Eliminar proyecto id_del_pro
-    if(isset($_POST['submit_del_pro'])){
+    if (isset($_POST['submit_del_pro'])) {
         $resultado = [
             'error' => false,
             'mensaje' => 'Proyecto ha sido borrado con éxito'
         ];
 
         deleteProyecto($_POST['id_del_pro'], $_SESSION['id']);
+    }
+
+    if(isset($_POST['submit_edit'])){
+
     }
 ?>
     <?php include('./views/template/header.php') ?>
@@ -165,13 +169,13 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
         </section>
         <!-- Mostrado de los proyectos -->
         <section>
-            <div class="container mt-4 mb-4 overflow-hidden">
+            <div class="container mt-1 mb-4 overflow-hidden">
                 <div class="row gy-5">
                     <?php
                     if ($pryectos) {
                         foreach ($pryectos as $pros) {
                     ?>
-                            <div class="col-sm-4 mt-3">
+                            <div class="col-sm-4 mt-2">
                                 <div class="card border border-secondary-subtle shadow">
                                     <img src="<?php echo escapar($pros['imagen_src']) ?>" class="card-img-top img-fluid" alt="...">
                                     <div class="card-body">
@@ -182,17 +186,61 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
                                         <h5>Contactos</h5>
                                         <?php echo escapar($pros['correo_proyecto']) ?>
                                         </p>
-                                        <div class="card-footer text-muted text-center">
-                                            <div>
-                                                <form method="delete">
-                                                    <input value="Editar" class="btn btn-primary mb-2">
-                                                    <input value="<?php echo $pros['id_proyecto'] ?>" class="btn btn-primary" hidden>
-                                                </form>
+                                        <div class="card-footer text-muted ">
+                                            <div class="">
+                                                <!-- Button trigger modal -->
+                                                <div class="">
+                                                    <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal_edit">
+                                                        Editar
+                                                    </button>
+                                                </div>
+                                                <div class="modal fade" id="exampleModal_edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar proyecto</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form method="post" name="userDataEdit" id="userDataEdit" enctype="multipart/form-data">
+                                                                    <div class="form-group">
+                                                                        <input type="number" name="id_pro" id="id_pro" class="form-control" value="<?= escapar($pros['id_proyecto']) ?>" hidden>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="nombre_pro">Nombre del proyecto</label>
+                                                                        <input type="text" name="nombre_pro" id="nombre_pro" class="form-control" required value="<?= escapar($pros['nombre_proyecto']) ?>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="desc">Descripción del proyecto</label>
+                                                                        <textarea type="text" name="desc" id="desc" class="form-control" required><?= escapar($pros['descripcion']) ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="img_pro">Imagen del proyecto</label>
+                                                                        <input type="file" name="img_pro" id="img_pro" class="form-control border border-0" accept="image/*" required>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="email">Email del creador</label>
+                                                                        <input type="text" name="email" id="email" class="form-control" value="<?= escapar($pros['correo_proyecto']) ?>" required>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="tel">telefono del creador</label>
+                                                                        <input type="number" name="tel" id="tel" class="form-control" value="<?= escapar($pros['telefono']) ?>" required>
+                                                                    </div>
+                                                                    <div style="display:flex;justify-content:center">
+                                                                        <button type="button" class="btn btn-secondary mr-2" data-bs-dismiss="modal">Cancelar</button>
+                                                                        <input type="submit" name="submit_edit" class="btn btn-primary" value="Guardar proyecto">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div>
+
+                                            <div class="mt-2">
                                                 <form method="POST">
                                                     <input type="number" value="<?php echo $pros['id_proyecto'] ?>" name="id_del_pro" id="id_del_pro" class="btn btn-primary" hidden>
-                                                    <input type="submit" name="submit_del_pro" id="submit_del_pro" value="Eliminar" class="btn btn-primary">
+                                                    <input type="submit" name="submit_del_pro" id="submit_del_pro" value="Eliminar" class="btn btn-primary" style="width:100%">
                                                 </form>
                                             </div>
                                         </div>
