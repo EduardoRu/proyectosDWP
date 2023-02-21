@@ -55,6 +55,12 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
 
         createProyecto($proyecto);
     }
+
+    // Editar proyecto
+    if(isset($_POST['submit_edit'])){
+        echo $_POST['id_pro_edit_25'];
+    }
+
     // Eliminar proyecto id_del_pro
     if (isset($_POST['submit_del_pro'])) {
         $resultado = [
@@ -63,10 +69,6 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
         ];
 
         deleteProyecto($_POST['id_del_pro'], $_SESSION['id']);
-    }
-
-    if(isset($_POST['submit_edit'])){
-
     }
 ?>
     <?php include('./views/template/header.php') ?>
@@ -204,31 +206,31 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
                                                             <div class="modal-body">
                                                                 <form method="post" name="userDataEdit" id="userDataEdit" enctype="multipart/form-data">
                                                                     <div class="form-group">
-                                                                        <input type="number" name="id_pro" id="id_pro" class="form-control" value="<?= escapar($pros['id_proyecto']) ?>" hidden>
+                                                                        <input type="number" name="id_pro_edit_<?= escapar($pros['id_proyecto'])?>" id="id_pro_edit_<?= escapar($pros['id_proyecto'])?>" class="form-control" value="<?= escapar($pros['id_proyecto']) ?>" hidden>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="nombre_pro">Nombre del proyecto</label>
-                                                                        <input type="text" name="nombre_pro" id="nombre_pro" class="form-control" required value="<?= escapar($pros['nombre_proyecto']) ?>">
+                                                                        <label for="nombre_pro_edit">Nombre del proyecto</label>
+                                                                        <input type="text" name="nombre_pro_edit" id="nombre_pro_edit" class="form-control" required value="<?= escapar($pros['nombre_proyecto']) ?>">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="desc">Descripción del proyecto</label>
-                                                                        <textarea type="text" name="desc" id="desc" class="form-control" required><?= escapar($pros['descripcion']) ?></textarea>
+                                                                        <label for="desc_edit">Descripción del proyecto</label>
+                                                                        <textarea type="text" name="desc_edit" id="desc_edit" class="form-control" required><?= escapar($pros['descripcion']) ?></textarea>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="img_pro">Imagen del proyecto</label>
-                                                                        <input type="file" name="img_pro" id="img_pro" class="form-control border border-0" accept="image/*" required>
+                                                                        <label for="img_pro_edit">Imagen del proyecto</label>
+                                                                        <input type="file" name="img_pro_edit" id="img_pro_edit" class="form-control border border-0" accept="image/*">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="email">Email del creador</label>
-                                                                        <input type="text" name="email" id="email" class="form-control" value="<?= escapar($pros['correo_proyecto']) ?>" required>
+                                                                        <label for="email_edit">Email del creador</label>
+                                                                        <input type="text" name="email_edit" id="email_edit" class="form-control" value="<?= escapar($pros['correo_proyecto']) ?>" required>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="tel">telefono del creador</label>
-                                                                        <input type="number" name="tel" id="tel" class="form-control" value="<?= escapar($pros['telefono']) ?>" required>
+                                                                        <label for="tel_edit">telefono del creador</label>
+                                                                        <input type="number" name="tel_edit" id="tel_edit" class="form-control" value="<?= escapar($pros['telefono']) ?>" required>
                                                                     </div>
                                                                     <div style="display:flex;justify-content:center">
                                                                         <button type="button" class="btn btn-secondary mr-2" data-bs-dismiss="modal">Cancelar</button>
-                                                                        <input type="submit" name="submit_edit" class="btn btn-primary" value="Guardar proyecto">
+                                                                        <input type="submit" name="submit_edit" id="submit_edit" class="btn btn-primary" value="Guardar proyecto">
                                                                     </div>
                                                                 </form>
                                                             </div>
