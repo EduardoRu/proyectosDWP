@@ -21,7 +21,7 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
         try {
             include($_SERVER['DOCUMENT_ROOT'] . '/tut/database/config_login.php');
 
-            $sql = "INSERT INTO proyecto (id_usuario, nombre_proyecto, descripcion, imagen_src, correo_proyecto, telefono)
+            $sql = "INSERT INTO proyecto (id_usuario, nombre_proyecto, descripcion, imagen_src, correo_proyecto, telefono) 
             VALUES (:" . implode(", :", array_keys($arrayProyecto)) . ")";
 
             $setencia = $conn->prepare($sql);
@@ -33,13 +33,34 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
         }
     }
 
-    function editProyecto($id_pro, $id_user)
+    function editProyecto($arrNew)
     {
         include($_SERVER['DOCUMENT_ROOT'] . '/tut/database/config_login.php');
 
-        
+        $proyecto = [
+            'id_proyecto'       =>  $arrNew['id_proyecto'],
+            'nombre_proyecto'   => $arrNew['nombre_proyecto'],
+            'descripcion'       => $arrNew['descripcion'],
+            'imagen_src'        => $arrNew['imagen_src'],
+            'correo_proyecto'   => $arrNew['correo_proyecto'],
+            'telefono'          => $arrNew['telefono']
+        ];
+
+        $consultaSQL = "UPDATE proyecto SET 
+        nombre_proyecto = :nombre_proyecto,
+        descripcion = :descripcion,
+        imagen_src = :imagen_src,
+        correo_proyecto = :correo_proyecto,
+        telefono = :telefono,
+        updated_at = NOW()
+        WHERE id_proyecto = :id_proyecto";
+
+
+        $sentecia = $conn->prepare($consultaSQL);
+        $sentecia->execute($proyecto);
 
         header('Location: ./home.php');
+        
     }
 
     function deleteProyecto($id_pro, $id_user){

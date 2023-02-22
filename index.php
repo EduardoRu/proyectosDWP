@@ -1,6 +1,6 @@
 <?php include('./views/template/header.php') ?>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div>
         <?php include('./views/template/nav_noLogin.php') ?>
     </div>
@@ -8,7 +8,7 @@
         I'm working in a carrusel de infromación con proyectos
     </section>
     <hr>
-    <div style="margin-top:5%">
+    <div class="mt-auto">
         <?php include('./views/template/footer.php') ?>
     </div>
 </body>
