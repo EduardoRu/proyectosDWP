@@ -1,7 +1,7 @@
 <?php
-$sName = "localhost";
+$sName = "localhost:6060";
 $uName = "root";
-$pass = "";
+$pass = "1q2w3e4r5t";
 $db_name = "alupros";
 try{
     $conn = new PDO (
