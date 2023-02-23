@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
     <div class="container-fluid" style="display:flex">
-        <a href="./home.php" class="navbar-brand text-light ml-5">
+        <a href="/tut/home.php" class="navbar-brand text-light ml-5">
             Inicio
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
                         Perfil
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Configuración</a></li>
+                        <li><a class="dropdown-item" href="./views/auth/config_usuario.php">Configuración</a></li>
                         <li><a class="dropdown-item" href="./controller/auth/logout.php">Cerrar sesión</a></li>
                     </ul>
                 </li>
