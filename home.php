@@ -7,7 +7,12 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
     //header("refresh: 0");
     // Obtener la infromaicón de los proyectos
     try {
-        $pryectos = getProyectos($_SESSION['id']);
+        $proyectos = [];
+        if(isset($_POST['proyecto_buscar'])){
+            $pryectos = getProyectos($_SESSION['id'], $_POST['proyecto_buscar']);
+        }else{
+            $pryectos = getProyectos($_SESSION['id'], "");
+        }
     } catch (error $e) {
         $error = $e->getMessage();
     }
@@ -140,8 +145,8 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
                         <h1>Mis proyectos</h1>
                     </div>
                     <div class="col-sm-6 mt-3">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Busca tu proyecto" aria-label="Search">
+                        <form class="d-flex" role="search" method="POST">
+                            <input class="form-control me-2" type="search" name="proyecto_buscar" id="proyecto_buscar" placeholder="Busca tu proyecto" aria-label="Search">
                             <button class="btn btn-outline-success ml-1" type="submit">Buscar</button>
                         </form>
                     </div>
@@ -201,9 +206,9 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
                                         <h5>Descripción</h5>
                                         <?php echo escapar($pros['descripcion']) ?>
                                         <h5>Contactos</h5>
-                                        <?php echo escapar($pros['correo_proyecto']) ?>
+                                        <i class="bi bi-envelope"></i> <?php echo escapar($pros['correo_proyecto']) ?>
                                         <br>
-                                        <?php echo escapar($pros['telefono']) ?>
+                                        <i class="bi bi-telephone"></i> <?php echo escapar($pros['telefono']) ?>
                                         </p>
                                         <div class="card-footer text-muted ">
                                             <?php include('./views/template/form_edit.php'); ?>

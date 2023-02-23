@@ -1,10 +1,18 @@
 <?php
 if (isset($_SESSION['id']) && $_SESSION['nombre']) {
-    function getProyectos($id)
+    function getProyectos($id, $typeNomProyecto)
     {
         try {
             include($_SERVER['DOCUMENT_ROOT'] . '/tut/database/config_login.php');
-            $sql = "SELECT * FROM proyecto WHERE id_usuario = " . $id;
+
+            $sql = "";
+
+            if($typeNomProyecto){
+                $sql = "SELECT * FROM proyecto WHERE nombre_proyecto LIKE '%". $typeNomProyecto ."%'";
+            }else{
+                $sql = "SELECT * FROM proyecto WHERE id_usuario = " . $id;
+            }
+            
 
             $sentencia = $conn->prepare($sql);
             $sentencia->execute();

@@ -1,10 +1,10 @@
 <?php include('./views/template/header.php') ?>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div class="">
         <?php include('./views/template/nav_noLogin.php') ?>
     </div>
-    <div class="d-flex justify-content-center align-items-center mt-5">
+    <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
         <form action="./controller/auth/login.php" class="shadow w-300 p-3" method="POST">
             <h4 class="display-4 fs-1">Inicio de sesión</h4>
             <br>
@@ -29,7 +29,7 @@
 
         </form>
     </div>
-    <div style="margin-top:5%">
+    <div class="mt-auto">
         <?php include('./views/template/footer.php') ?>
     </div>
 </body>
