@@ -9,20 +9,48 @@
         <div class="collapse navbar-collapse mr-5" id="navbarNav" style="justify-content:end">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-light border-bottom mx-1" href="./login.php">
+                    <a class="nav-link text-light border-bottom mx-1" href="./exploraProyecto.php">
                         Explora los proyectos
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light border-bottom mx-1" href="./login.php">
-                        Inicio de sesión
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light border-bottom mx-1" href="./register.php">
-                        Registrarte
-                    </a>
-                </li>
+                <?php
+                session_start();
+                if (isset($_SESSION['id']) && $_SESSION['nombre']) {
+                ?>
+                    <li class="nav-item">
+                        <a href="./home.php" class="nav-link text-light border-bottom mx-1">
+                            Portafolio
+                        </a>
+                    </li>
+                    <div class="collapse navbar-collapse mr-5 pr-3" id="navbarNav" style="justify-content:end">
+                        <ul class="navbar-nav text-light border-bottom mx-1">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Perfil
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="./views/auth/config_usuario.php">Configuración</a></li>
+                                    <li><a class="dropdown-item" href="./controller/auth/logout.php">Cerrar sesión</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                <?php
+                } else {
+                ?>
+                    <li class="nav-item">
+                        <a class="nav-link text-light border-bottom mx-1" href="./login.php">
+                            Inicio de sesión
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light border-bottom mx-1" href="./register.php">
+                            Registrarte
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
 </nav>
