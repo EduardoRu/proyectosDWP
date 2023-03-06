@@ -7,9 +7,9 @@ function getProyectos($typeNomProyecto)
         $sql = "";
 
         if($typeNomProyecto){
-            $sql = "SELECT * FROM proyecto WHERE  nombre_proyecto LIKE '%". $typeNomProyecto ."%'";
+            $sql = "SELECT * FROM proyecto WHERE nombre_proyecto LIKE '%". $typeNomProyecto ."%'";
         }else{
-            $sql = "SELECT * FROM proyecto WHERE";
+            $sql = "SELECT * FROM proyecto";
         }
         
 
@@ -22,3 +22,4 @@ function getProyectos($typeNomProyecto)
         return "<h1>Algo ha salido al momento de cargar la infromación <br> error: " . $e . "</h1>";
     }
 }
+?>

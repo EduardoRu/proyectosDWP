@@ -32,7 +32,7 @@ include('./controller/auth/checklog.php')
                                     Perfil
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="./views/auth/config_usuario.php">Configuración</a></li>
+                                    <li><a class="dropdown-item" href="./config_user.php">Configuración</a></li>
                                     <li><a class="dropdown-item" href="./controller/auth/logout.php">Cerrar sesión</a></li>
                                 </ul>
                             </li>

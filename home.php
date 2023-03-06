@@ -26,6 +26,9 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
         ];
 
         $direccion = "./storage/proyectos_user/" . $_SESSION['id'] . "-" . $_SESSION['nombre'];
+        if(!is_dir($direccion)){
+            mkdir($direccion, 0777, true);
+        }
         $fileDestiantion = "";
 
         $file = $_FILES['img_pro'];

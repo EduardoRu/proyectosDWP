@@ -9,7 +9,7 @@ include('./views/template/header.php')
         <?php include('./views/template/nav_noLogin.php') ?>
     </div>
     <div class="d-flex" style="height:450px;">
-        <img src="./assets/img/team.png" style="max-height: 100%; opacity: 80%;" class="img-fluid w-100" alt="...">
+        <img src="./assets/img/team.png" style="max-height: 100%; opacity: 90%; object-fit:cover" class=" w-100" alt="...">
     </div>
 
     <section class="mt-2">
