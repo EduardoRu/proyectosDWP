@@ -1,10 +1,11 @@
 <?php
 session_start();
+?>
+<?php
 if (isset($_SESSION['id']) && $_SESSION['nombre']) {
     include('./controller/service/proyectoCRUD.php');
     include('./function/funciones.php');
     $error = false;
-    //header("refresh: 0");
     // Obtener la infromaicón de los proyectos
     try {
         $proyectos = [];
@@ -131,11 +132,14 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
     }
 
 ?>
-    <?php include('./views/template/header.php') ?>
+    <?php 
+    $titulo = 'Proyectate || Portafolio';
+    include('./views/template/header.php') 
+    ?>
 
     <body class="d-flex flex-column min-vh-100">
         <div>
-            <?php include('./views/template/nav_login.php') ?>
+            <?php include('./views/template/nav_nologin.php') ?>
         </div>
         <!-- Barra principal, aquí es posible administrar nuevos proyectos así como mostrar su busqueda -->
         <section class="mt-1">

@@ -1,4 +1,7 @@
-<?php include('./views/template/header.php'); ?>
+<?php 
+$titulo = 'Proyectate || Registro';
+include('./views/template/header.php'); 
+?>
 
 <body>
     <div>

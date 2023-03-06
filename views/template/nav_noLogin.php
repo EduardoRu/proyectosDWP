@@ -1,6 +1,10 @@
+<?php
+include('./controller/auth/checklog.php')
+?>
 <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
     <div class="container-fluid" style="display:flex">
         <a href="./index.php" class="navbar-brand text-light ml-5">
+            <img src="./assets/img/logo.png" alt="..." width="30" height="24" class="d-inline-block align-text-top">
             Inicio
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,8 +18,7 @@
                     </a>
                 </li>
                 <?php
-                session_start();
-                if (isset($_SESSION['id']) && $_SESSION['nombre']) {
+                if ($loginst == 1) {
                 ?>
                     <li class="nav-item">
                         <a href="./home.php" class="nav-link text-light border-bottom mx-1">
@@ -35,6 +38,9 @@
                             </li>
                         </ul>
                     </div>
+
+
+
                 <?php
                 } else {
                 ?>

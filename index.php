@@ -1,11 +1,15 @@
-<?php include('./views/template/header.php') ?>
+
+<?php 
+$titulo = 'Proyectate || Inicio';
+include('./views/template/header.php') 
+?>
 
 <body class="d-flex flex-column min-vh-100">
     <div>
         <?php include('./views/template/nav_noLogin.php') ?>
     </div>
-    <div class="d-flex" style="height:450px; background-color:#3378da">
-        <img src="./assets/img/team.png" style="max-height: 100%; opacity: 50%;" class="img-fluid w-100" alt="...">
+    <div class="d-flex" style="height:450px;">
+        <img src="./assets/img/team.png" style="max-height: 100%; opacity: 80%;" class="img-fluid w-100" alt="...">
     </div>
 
     <section class="mt-2">

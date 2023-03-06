@@ -1,4 +1,7 @@
-<?php include('./views/template/header.php') ?>
+<?php 
+$titulo = 'Proyectate || Inicio de sesión';
+include('./views/template/header.php') 
+?>
 
 <body class="d-flex flex-column min-vh-100">
     <div class="">

@@ -28,6 +28,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
 
             if($uemail === $email){
                 if(password_verify($password, $upassword)){
+                    setcookie('sesion_inicada',true, time()+3600);
                     $_SESSION['id'] = $id;
                     $_SESSION['nombre'] = $name;
                     

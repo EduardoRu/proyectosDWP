@@ -8,7 +8,7 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
             $sql = "";
 
             if($typeNomProyecto){
-                $sql = "SELECT * FROM proyecto WHERE nombre_proyecto LIKE '%". $typeNomProyecto ."%'";
+                $sql = "SELECT * FROM proyecto WHERE id_usuario = $id AND nombre_proyecto LIKE '%". $typeNomProyecto ."%'";
             }else{
                 $sql = "SELECT * FROM proyecto WHERE id_usuario = " . $id;
             }
