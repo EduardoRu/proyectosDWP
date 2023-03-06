@@ -1,5 +1,6 @@
 <?php
 session_start();
+$error = false;
 if (isset($_SESSION['id']) && $_SESSION['nombre']) {
     include('./function/funciones.php');
     include('./controller/auth/userCRUD.php');
@@ -11,7 +12,7 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
     }
 
     //Actualizar datos generales
-    if(isset($_POST['submit_data_user'])){
+    if (isset($_POST['submit_data_user'])) {
         $user_Update = [
             'nombre'        => $_POST['name_user'],
             'apellido'      => $_POST['lastname_user'],
@@ -21,11 +22,13 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
         updateUserData($user_Update, $_SESSION['id']);
     }
     //Actualizar contraseña
-    if(isset($_POST['submit_pass_user'])){
+    if (isset($_POST['submit_pass_user'])) {
         $user_Update_Pass = [
             'old_password'      => $_POST['pass_user_old'],
             'new_password'      => $_POST['pass_user_new']
         ];
+
+        updateUserPass($user_Update_Pass, $_SESSION['id']);
     }
 ?>
 
@@ -38,6 +41,21 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
         <div>
             <?php include('./views/template/nav_noLogin.php') ?>
         </div>
+        <?php
+        if ($error) {
+        ?>
+            <div class="container mt-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" role="alert">
+                            <?= $error ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
         <!-- Cuerpo de la estructura para la configuración del usuario -->
         <section>
             <div class="container mt-2 mb-2">
