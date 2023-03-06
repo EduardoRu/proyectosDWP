@@ -53,7 +53,7 @@ if (isset($_SESSION['id']) && $_SESSION['nombre']) {
                 $setencia_Update = $conn->prepare($consultaUpdatePass);
                 $setencia_Update->execute([$pass, $id]);
                 
-                header('Location: ./config_user');
+                header('Location: ./config_user.php');
                 exit;
             }else{
                 return $error = "La contraseña es incorrecta";
